@@ -1,0 +1,35 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "preLaunchTask": "${defaultBuildTask}",
+            "type": "probe-rs-debug",
+            "request": "launch",
+            "name": "probe_rs Executable Test",
+            "chip": "STM32F411CEUx",
+            "cwd": "${workspaceFolder}",
+            "speed": 24000,
+            // Modify
+            "runtimeExecutable": "probe-rs",
+            "runtimeArgs": [
+                "dap-server"
+            ],
+            "env": {
+                "DEFMT_LOG": "info"
+            },
+            "consoleLogLevel": "Console",
+            "flashingConfig": {
+                "flashingEnabled": true,
+                "haltAfterReset": false,
+                "formatOptions": {
+                    "binaryFormat": "elf"
+                }
+            },
+            "coreConfigs": [
+                {
+                    "programBinary": "target/thumbv7em-none-eabihf/debug/blackpill-embassy-cdc-modbus"
+                }
+            ]
+        }
+    ]
+}
